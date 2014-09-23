@@ -3,6 +3,9 @@ loadAPI(1);
 host.defineController("Korg", "padKONTROL", "1.0", "6C7FD3BD-B1F3-4A0A-A745-F2D53FFC603D");
 host.defineMidiPorts(2, 1);
 
+host.addDeviceNameBasedDiscoveryPair(["padKONTROL", "MIDIIN3 (padKONTROL)"], ["MIMIOUT2 (padKONTROL)"]);
+host.addDeviceNameBasedDiscoveryPair(["padKONTROL MIDI 1", "padKONTROL MIDI 3"], ["padKONTROL MIDI 2"]);
+
 var Mode =
 {
    Drum:0
@@ -99,7 +102,7 @@ var hold = false;
 
 function init()
 {
-   noteInput = host.getMidiInPort(1).createNoteInput("padKONTROL", "8A????", "9A????");
+   noteInput = host.getMidiInPort(1).createNoteInput("", "8A????", "9A????");
    //host.getMidiInPort(0).setMidiCallback(onMidi);
    host.getMidiInPort(0).setSysexCallback(onSysex);
 
